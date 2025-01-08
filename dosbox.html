@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <title>DOSBox</title>
+    <script type="text/javascript" src="bsdtar.js"></script>
+    <script type="text/javascript" src="CPU_types.js"></script>
+    <script type="text/javascript" src="dd.js"></script>
+    <script type="text/javascript" src="dosbox.js"></script>
+    <script type="text/javascript" src="dosbox-0.74.conf.js"></script>
+    <script type="text/javascript" src="fdisk.js"></script>
+    <script type="text/javascript" src="gamepad.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+  </head>
+
+  <body>
+
+    <!-- Splash -->
+    <div id="splash" class="splash"></div>
+
+    <!-- Top Panel -->
+    <div id="topPanel" class="topPanel">
+      <img id="startButton" class="startButton" src="images/ic_dehaze_white_24dp.png" title="Main Menu">
+    </div>
+
+    <!-- Side Panel -->
+    <div id="sidePanel" class="sidePanel">
+      <a class="playDOSBox">
+        <img src="images/ic_play_circle_outline_white_24dp.png">
+        <label id="playDOSBox">Play DOSBox</label>
+      </a>
+      <a class="toggleFullscreen">
+        <img src="images/ic_crop_free_white_24dp.png">
+        <label id="toggleFullscreen">Toggle Fullscreen [F11]</label>
+      </a>
+      <a class="settings">
+        <img src="images/ic_settings_white_24dp.png">
+        <label id="settings">Settings +</label>
+      </a>
+      <a class="fileManager">
+        <img src="images/ic_folder_open_white_24dp.png">
+        <label id="fileManager">File Manager +</label>
+      </a>
+      <a class="help">
+        <img src="images/ic_help_outline_white_24dp.png">
+        <label id="help">Help +</label>
+      </a>
+    </div>
+
+    <!-- Settings Panel -->
+    <div id="settingsPanel" class="sidePanel">
+      <span class="cpu">
+        <img src="images/ic_memory_white_24dp.png">
+        <font>CPU</font>
+      </span>
+      <span class="cpuType">
+        <strong>Type</strong>
+        <input readonly="true" type="text" id="cpuType" value="386 DX 25">
+      </span>
+      <span class="memory">
+        <img src="images/ic_straighten_white_24dp.png">
+        <font>Memory</font>
+      </span>
+      <span class="memorySize">
+        <strong>Size</strong>
+        <input readonly="true" type="text" id="memorySize" class="memorySize" value="4 MByte">
+      </span>
+      <span class="video">
+        <img src="images/ic_aspect_ratio_white_24dp.png">
+        <font>Video</font>
+      </span>
+      <span class="videoMode">
+        <strong>Mode</strong>
+        <input readonly="true" type="text" id="videoMode" class="videoMode" value="NORMAL">
+      </span>
+      <span class="aspectRatio">
+        <mark id="aspectRatio" class="OFF">OFF</mark>
+        <small>Mantain 4:3 Aspect Ratio</small>
+      </span>
+      <span class="mouse">
+        <img src="images/ic_mouse_white_24dp.png">
+        <font>Mouse</font>
+      </span>
+      <span class="enableMouseLock">
+        <mark id="enableMouseLock" class="OFF">OFF</mark>
+        <small>Enable Mouse Lock [Experimental]</small>
+      </span>
+      <span class="mouseSensitivity">
+        <strong>Sensitivity</strong>
+        <input type="number" id="mouseSensitivity" min="1" max="1000" value="100" title="Value: 1-1000">
+      </span>
+      <a class="systemBoot">
+        <img src="images/ic_power_settings_new_white_24dp.png">
+        <label id="systemBoot">System Boot +</label>
+      </a>
+      <span class="settingsButtons">
+        <button id="syncSettings">Sync</button>
+        <button id="resetSettings" class="resetSettings">Reset</button>
+      </span>
+    </div>
+
+    <!-- System Boot Panel -->
+    <div id="systemBootPanel" class="sidePanel">
+      <span class="autoexec">
+        <img src="images/ic_code_white_24dp.png">
+        <font>Autoexec</font>
+        <img id="closeSystemBootPanel" class="closeSystemBootButton" src="images/ic_clear_white_24dp.png" title="Close">
+      </span>
+      <span class="autoexecLines">
+        <textarea id="autoexecLines" rows="18" cols="42"># Lines in this section will be run at startup.</textarea>
+      </span>
+      <span class="autoexecButtons">
+        <button id="syncAutoexec">Sync</button>
+        <button id="resetAutoexec" class="resetAutoexec">Reset</button>
+      </span>
+    </div>
+
+    <!-- File Manager Panel -->
+    <div id="fileManagerPanel" class="sidePanel">
+      <span class="drives">
+        <img src="images/ic_kitchen_white_24dp.png">
+        <font>Drives</font>
+      </span>
+      <span class="drivesListFields">
+        <label class="drivesList">Drive</label>
+        <label class="drivesListSize">Size</label>
+      </span>
+      <span id="drivesList" class="drivesList">
+        <img id="floppyDrive" class="floppyDrive" src="images/ic_save_white_18dp.png" title="Floppy Drive">
+        <img id="hdDrive" class="hdDrive" src="images/ic_storage_white_18dp.png" title="Hard Disk Drive">
+        <img id="cdromDrive" class="cdromDrive" src="images/ic_album_white_18dp.png" title="CD-ROM Drive">
+        <img id="removableDrive" class="removableDrive" src="images/ic_dns_white_18dp.png" title="Removable Drive">
+        <input readonly="true" type="text" id="hdDriveSize" class="hdDriveSize" value="256 MB">
+      </span>
+    </div>
+
+    <!-- Floppy Drive Context Menu -->
+    <div id="floppyDriveContextMenu" class="contextMenu">
+      <label for="mountFloppyImages" class="mountFloppyImages">Mount Floppy Image(s)...</label>
+      <label id="umountFloppyImages" class="umountFloppyImages">Unmount Floppy Image(s)</label>
+    </div>
+
+    <!-- Hard Disk Drive Context Menu -->
+    <div id="hdDriveContextMenu" class="contextMenu">
+      <label for="importDirectory" class="importDirectory">Import Directory...</label>
+      <label for="importZipFile" class="importZipFile">Import ZIP File...</label>
+      <label id="formatHDdrive" class="formatHDdrive">Format Hard Disk Drive</label>
+      <label id="createHDimage" class="createHDimage">Create Hard Disk Image</label>
+      <label for="mountHDimage" class="mountHDimage">Mount Hard Disk Image...</label>
+      <label id="umountHDimage" class="umountHDimage">Unmount Hard Disk Image</label>
+    </div>
+
+    <!-- CD-ROM Drive Context Menu -->
+    <div id="cdromDriveContextMenu" class="contextMenu">
+      <label for="mountCDROMimage" class="mountCDROMimage">Mount CD-ROM Image...</label>
+      <label id="umountCDROMimage" class="umountCDROMimage">Unmount CD-ROM Image</label>
+    </div>
+
+    <!-- Removable Drive Context Menu -->
+    <div id="removableDriveContextMenu" class="contextMenu">
+      <label id="createRemovableImage" class="createRemovableImage">Create Removable Disk Image</label>
+      <label for="mountRemovableimage" class="mountRemovableimage">Mount Removable Disk Image...</label>
+      <label id="umountRemovableimage" class="umountRemovableimage">Unmount Removable Disk Image</label>
+    </div>
+
+    <!-- Help Panel -->
+    <div id="helpPanel" class="sidePanel">
+      <span class="keyboardShortcuts">
+        <img src="images/ic_keyboard_white_24dp.png">
+        <font>Keyboard Shortcuts</font>
+      </span>
+      <span class="keyboardShortcuts0">
+        <strong>ALT</strong>
+        <p class="keyboardShortcuts0">+</p>
+        <strong class="keyboardShortcuts1">PAUSE</strong>
+        <p class="keyboardShortcuts1">Pause Emulation</p>
+      </span>
+      <span id="keyboardShortcuts1" class="keyboardShortcuts1">
+        <strong>CTRL</strong>
+        <p class="keyboardShortcuts2">+</p>
+        <strong class="keyboardShortcuts2">F1</strong>
+        <p class="keyboardShortcuts3">Show The Keymapper</p>
+      </span>
+      <span id="keyboardShortcuts2" class="keyboardShortcuts2">
+        <strong>CTRL</strong>
+        <p class="keyboardShortcuts4">+</p>
+        <strong class="keyboardShortcuts3">F9</strong>
+        <p class="keyboardShortcuts5">Close DOSBox</p>
+      </span>
+    </div>
+
+    <!-- Background Image -->
+    <div>
+      <img id="backgroundImage" class="backgroundImage" src="images/background.png">
+    </div>
+
+    <!-- Native Client -->
+    <div id="nativeClient" class="nativeClient"></div>
+
+    <!-- Popup -->
+    <div id="popup" class="popup"></div>
+
+    <input hidden="true" type="file" id="mountFloppyImages" multiple accept=".IMA, .IMG">
+    <input hidden="true" type="file" id="importDirectory" webkitdirectory>
+    <input hidden="true" type="file" id="importZipFile" accept=".ZIP">
+    <input hidden="true" type="file" id="mountHDimage" accept=".IMG">
+    <input hidden="true" type="file" id="mountCDROMimage" accept=".ISO">
+    <input hidden="true" type="file" id="mountRemovableimage" accept=".IMG">
+
+  </body>
+
+</html>

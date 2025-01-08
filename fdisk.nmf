@@ -1,0 +1,150 @@
+{
+  "files": {
+    "libm.so.11835d88": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libm.so.11835d88"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libm.so.11835d88"
+      }
+    },
+    "libc.so.11835d88": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libc.so.11835d88"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libc.so.11835d88"
+      },
+      "arm": {
+        "url": "_platform_specific/arm/libarm/libc.so.0.1"
+      }
+    },
+    "libppapi_simple_real.so": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libppapi_simple_real.so"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libppapi_simple_real.so"
+      },
+      "arm": {
+        "url": "_platform_specific/arm/libarm/libppapi_simple_real.so"
+      }
+    },
+    "libblkid.so.1": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libblkid.so.1"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libblkid.so.1"
+      },
+      "arm": {
+        "url": "_platform_specific/arm/libarm/libblkid.so.1"
+      }
+    },
+    "main.nexe": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/fdisk_x86_64.nexe"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/fdisk_i686.nexe"
+      },
+      "arm": {
+        "url": "_platform_specific/arm/fdisk_arm.nexe"
+      }
+    },
+    "libstdc++.so.6": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libstdc++.so.6"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libstdc++.so.6"
+      },
+      "arm": {
+        "url": "_platform_specific/arm/libarm/libstdc++.so.6"
+      }
+    },
+    "libpthread.so.11835d88": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libpthread.so.11835d88"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libpthread.so.11835d88"
+      }
+    },
+    "libnacl_spawn.so": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libnacl_spawn.so"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libnacl_spawn.so"
+      },
+      "arm": {
+        "url": "_platform_specific/arm/libarm/libnacl_spawn.so"
+      }
+    },
+    "libgcc_s.so.1": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libgcc_s.so.1"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libgcc_s.so.1"
+      },
+      "arm": {
+        "url": "_platform_specific/arm/libarm/libgcc_s.so.1"
+      }
+    },
+    "ld-nacl-arm.so.1": {
+      "arm": {
+        "url": "_platform_specific/arm/libarm/ld-nacl-arm.so.1"
+      }
+    },
+    "libuuid.so.1": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libuuid.so.1"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libuuid.so.1"
+      },
+      "arm": {
+        "url": "_platform_specific/arm/libarm/libuuid.so.1"
+      }
+    },
+    "libnacl_io.so": {
+      "x86-64": {
+        "url": "_platform_specific/x86-64/lib64/libnacl_io.so"
+      },
+      "x86-32": {
+        "url": "_platform_specific/x86-32/lib32/libnacl_io.so"
+      },
+      "arm": {
+        "url": "_platform_specific/arm/libarm/libnacl_io.so"
+      }
+    },
+    "libpthread.so.0": {
+      "arm": {
+        "url": "_platform_specific/arm/libarm/libpthread.so.0"
+      }
+    },
+    "libc.so.0.1": {
+      "arm": {
+        "url": "_platform_specific/arm/libarm/libc.so.0.1"
+      }
+    },
+    "libm.so.0.1": {
+      "arm": {
+        "url": "_platform_specific/arm/libarm/libm.so.0.1"
+      }
+    }
+  },
+  "program": {
+    "x86-64": {
+      "url": "_platform_specific/x86-64/lib64/runnable-ld.so"
+    },
+    "x86-32": {
+      "url": "_platform_specific/x86-32/lib32/runnable-ld.so"
+    },
+    "arm": {
+      "url": "_platform_specific/arm/libarm/elf_loader_arm.nexe"
+    }
+  }
+}
